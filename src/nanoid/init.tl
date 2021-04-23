@@ -1,4 +1,11 @@
-local nanoid = {
+local record NanoId
+   _VERSION: string
+   custom_alphabet: function(string, number): (function(): string)
+   nanoid: function(number): string
+   metamethod __call: function(NanoId, number): string
+end
+
+local nanoid: NanoId = {
   _VERSION = "2.0.0"
 }
 
@@ -37,10 +44,8 @@ function nanoid.nanoid(size: number): string
    return id
 end
 
-setmetatable(nanoid, {
+return setmetatable(nanoid, {
    __call = function(_, size: number): string
       return nanoid.nanoid(size or 21)
    end
 })
-
-return nanoid

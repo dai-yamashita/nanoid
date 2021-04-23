@@ -1,7 +1,2 @@
-local NanoId = {}
-
-
-local _require = require
-local nanoid = _require("nanoid")
-
+local nanoid = require("nanoid")
 print(nanoid())
